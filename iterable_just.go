@@ -6,18 +6,8 @@ type justIterable struct {
 }
 
 func newJustIterable(items ...interface{}) func(opts ...Option) Iterable {
-	return func(opts ...Option) Iterable {
-		return &justIterable{
-			items: items,
-			opts:  opts,
-		}
-	}
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (i *justIterable) Observe(opts ...Option) <-chan Item {
-	option := parseOptions(append(i.opts, opts...)...)
-	next := option.buildChannel()
-
-	go SendItems(option.buildContext(emptyContext), next, CloseChannel, i.items)
-	return next
-}
+func (i *justIterable) Observe(opts ...Option) <-chan Item { _ = "STUB: not implemented"; return nil }

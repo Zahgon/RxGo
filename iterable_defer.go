@@ -6,23 +6,8 @@ type deferIterable struct {
 }
 
 func newDeferIterable(f []Producer, opts ...Option) Iterable {
-	return &deferIterable{
-		fs:   f,
-		opts: opts,
-	}
+	_ = "STUB: not implemented"
+	return *new(Iterable)
 }
 
-func (i *deferIterable) Observe(opts ...Option) <-chan Item {
-	option := parseOptions(append(i.opts, opts...)...)
-	next := option.buildChannel()
-	ctx := option.buildContext(emptyContext)
-
-	go func() {
-		defer close(next)
-		for _, f := range i.fs {
-			f(ctx, next)
-		}
-	}()
-
-	return next
-}
+func (i *deferIterable) Observe(opts ...Option) <-chan Item { _ = "STUB: not implemented"; return nil }

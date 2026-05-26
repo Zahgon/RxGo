@@ -5,9 +5,11 @@ type factoryIterable struct {
 }
 
 func newFactoryIterable(factory func(opts ...Option) <-chan Item) Iterable {
-	return &factoryIterable{factory: factory}
+	_ = "STUB: not implemented"
+	return *new(Iterable)
 }
 
 func (i *factoryIterable) Observe(opts ...Option) <-chan Item {
-	return i.factory(opts...)
+	_ = "STUB: not implemented"
+	return nil
 }

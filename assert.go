@@ -3,8 +3,6 @@ package rxgo
 import (
 	"context"
 	"testing"
-
-	"github.com/stretchr/testify/assert"
 )
 
 // AssertPredicate is a custom predicate based on the items.
@@ -47,226 +45,99 @@ type rxAssert struct {
 	customPredicates        []AssertPredicate
 }
 
-func (ass *rxAssert) apply(do *rxAssert) {
-	ass.f(do)
-}
+func (ass *rxAssert) apply(do *rxAssert) { _ = "STUB: not implemented"; return }
 
 func (ass *rxAssert) itemsToBeChecked() (bool, []interface{}) {
-	return ass.checkHasItems, ass.items
+	_ = "STUB: not implemented"
+	return false, nil
 }
 
 func (ass *rxAssert) itemsNoOrderedToBeChecked() (bool, []interface{}) {
-	return ass.checkHasItemsNoOrder, ass.itemsNoOrder
+	_ = "STUB: not implemented"
+	return false, nil
 }
 
-func (ass *rxAssert) noItemsToBeChecked() bool {
-	return ass.checkHasNoItems
-}
+func (ass *rxAssert) noItemsToBeChecked() bool { _ = "STUB: not implemented"; return false }
 
-func (ass *rxAssert) someItemsToBeChecked() bool {
-	return ass.checkHasSomeItems
-}
+func (ass *rxAssert) someItemsToBeChecked() bool { _ = "STUB: not implemented"; return false }
 
 func (ass *rxAssert) raisedErrorToBeChecked() (bool, error) {
-	return ass.checkHasRaisedError, ass.err
+	_ = "STUB: not implemented"
+	return false, nil
 }
 
 func (ass *rxAssert) raisedErrorsToBeChecked() (bool, []error) {
-	return ass.checkHasRaisedErrors, ass.errs
+	_ = "STUB: not implemented"
+	return false, nil
 }
 
 func (ass *rxAssert) raisedAnErrorToBeChecked() (bool, error) {
-	return ass.checkHasRaisedAnError, ass.err
+	_ = "STUB: not implemented"
+	return false, nil
 }
 
-func (ass *rxAssert) notRaisedErrorToBeChecked() bool {
-	return ass.checkHasNotRaisedError
-}
+func (ass *rxAssert) notRaisedErrorToBeChecked() bool { _ = "STUB: not implemented"; return false }
 
 func (ass *rxAssert) itemToBeChecked() (bool, interface{}) {
-	return ass.checkHasItem, ass.item
+	_ = "STUB: not implemented"
+	return false, nil
 }
 
 func (ass *rxAssert) noItemToBeChecked() (bool, interface{}) {
-	return ass.checkHasNoItem, ass.item
+	_ = "STUB: not implemented"
+	return false, nil
 }
 
 func (ass *rxAssert) customPredicatesToBeChecked() (bool, []AssertPredicate) {
-	return ass.checkHasCustomPredicate, ass.customPredicates
+	_ = "STUB: not implemented"
+	return false, nil
 }
 
-func newAssertion(f func(*rxAssert)) *rxAssert {
-	return &rxAssert{
-		f: f,
-	}
-}
+func newAssertion(f func(*rxAssert)) *rxAssert { _ = "STUB: not implemented"; return nil }
 
 // HasItems checks that the observable produces the corresponding items.
-func HasItems(items ...interface{}) RxAssert {
-	return newAssertion(func(a *rxAssert) {
-		a.checkHasItems = true
-		a.items = items
-	})
-}
+func HasItems(items ...interface{}) RxAssert { _ = "STUB: not implemented"; return *new(RxAssert) }
 
 // HasItem checks if a single or optional single has a specific item.
-func HasItem(i interface{}) RxAssert {
-	return newAssertion(func(a *rxAssert) {
-		a.checkHasItem = true
-		a.item = i
-	})
-}
+func HasItem(i interface{}) RxAssert { _ = "STUB: not implemented"; return *new(RxAssert) }
 
 // HasItemsNoOrder checks that an observable produces the corresponding items regardless of the order.
 func HasItemsNoOrder(items ...interface{}) RxAssert {
-	return newAssertion(func(a *rxAssert) {
-		a.checkHasItemsNoOrder = true
-		a.itemsNoOrder = items
-	})
+	_ = "STUB: not implemented"
+	return *new(RxAssert)
 }
 
 // IsNotEmpty checks that the observable produces some items.
-func IsNotEmpty() RxAssert {
-	return newAssertion(func(a *rxAssert) {
-		a.checkHasSomeItems = true
-	})
-}
+func IsNotEmpty() RxAssert { _ = "STUB: not implemented"; return *new(RxAssert) }
 
 // IsEmpty checks that the observable has not produce any item.
-func IsEmpty() RxAssert {
-	return newAssertion(func(a *rxAssert) {
-		a.checkHasNoItems = true
-	})
-}
+func IsEmpty() RxAssert { _ = "STUB: not implemented"; return *new(RxAssert) }
 
 // HasError checks that the observable has produce a specific error.
-func HasError(err error) RxAssert {
-	return newAssertion(func(a *rxAssert) {
-		a.checkHasRaisedError = true
-		a.err = err
-	})
-}
+func HasError(err error) RxAssert { _ = "STUB: not implemented"; return *new(RxAssert) }
 
 // HasAnError checks that the observable has produce an error.
-func HasAnError() RxAssert {
-	return newAssertion(func(a *rxAssert) {
-		a.checkHasRaisedAnError = true
-	})
-}
+func HasAnError() RxAssert { _ = "STUB: not implemented"; return *new(RxAssert) }
 
 // HasErrors checks that the observable has produce a set of errors.
-func HasErrors(errs ...error) RxAssert {
-	return newAssertion(func(a *rxAssert) {
-		a.checkHasRaisedErrors = true
-		a.errs = errs
-	})
-}
+func HasErrors(errs ...error) RxAssert { _ = "STUB: not implemented"; return *new(RxAssert) }
 
 // HasNoError checks that the observable has not raised any error.
-func HasNoError() RxAssert {
-	return newAssertion(func(a *rxAssert) {
-		a.checkHasRaisedError = true
-	})
-}
+func HasNoError() RxAssert { _ = "STUB: not implemented"; return *new(RxAssert) }
 
 // CustomPredicate checks a custom predicate.
 func CustomPredicate(predicate AssertPredicate) RxAssert {
-	return newAssertion(func(a *rxAssert) {
-		if !a.checkHasCustomPredicate {
-			a.checkHasCustomPredicate = true
-			a.customPredicates = make([]AssertPredicate, 0)
-		}
-		a.customPredicates = append(a.customPredicates, predicate)
-	})
+	_ = "STUB: not implemented"
+	return *new(RxAssert)
 }
 
 func parseAssertions(assertions ...RxAssert) RxAssert {
-	ass := new(rxAssert)
-	for _, assertion := range assertions {
-		assertion.apply(ass)
-	}
-	return ass
+	_ = "STUB: not implemented"
+	return *new(RxAssert)
 }
 
 // Assert asserts the result of an iterable against a list of assertions.
 func Assert(ctx context.Context, t *testing.T, iterable Iterable, assertions ...RxAssert) {
-	ass := parseAssertions(assertions...)
-
-	got := make([]interface{}, 0)
-	errs := make([]error, 0)
-
-	observe := iterable.Observe()
-loop:
-	for {
-		select {
-		case <-ctx.Done():
-			break loop
-		case item, ok := <-observe:
-			if !ok {
-				break loop
-			}
-			if item.Error() {
-				errs = append(errs, item.E)
-			} else {
-				got = append(got, item.V)
-			}
-		}
-	}
-
-	if checked, predicates := ass.customPredicatesToBeChecked(); checked {
-		for _, predicate := range predicates {
-			err := predicate(got)
-			if err != nil {
-				assert.Fail(t, err.Error())
-			}
-		}
-	}
-	if checkHasItems, expectedItems := ass.itemsToBeChecked(); checkHasItems {
-		assert.Equal(t, expectedItems, got)
-	}
-	if checkHasItemsNoOrder, itemsNoOrder := ass.itemsNoOrderedToBeChecked(); checkHasItemsNoOrder {
-		m := make(map[interface{}]interface{})
-		for _, v := range itemsNoOrder {
-			m[v] = nil
-		}
-
-		for _, v := range got {
-			delete(m, v)
-		}
-		if len(m) != 0 {
-			assert.Fail(t, "missing elements", "%v", got)
-		}
-	}
-	if checkHasItem, value := ass.itemToBeChecked(); checkHasItem {
-		length := len(got)
-		if length != 1 {
-			assert.FailNow(t, "wrong number of items", "expected 1, got %d", length)
-		}
-		assert.Equal(t, value, got[0])
-	}
-	if ass.noItemsToBeChecked() {
-		assert.Equal(t, 0, len(got))
-	}
-	if ass.someItemsToBeChecked() {
-		assert.NotEqual(t, 0, len(got))
-	}
-	if checkHasRaisedError, expectedError := ass.raisedErrorToBeChecked(); checkHasRaisedError {
-		if expectedError == nil {
-			assert.Equal(t, 0, len(errs))
-		} else {
-			if len(errs) == 0 {
-				assert.FailNow(t, "no error raised", "expected %v", expectedError)
-			}
-			assert.Equal(t, expectedError, errs[0])
-		}
-	}
-	if checkHasRaisedErrors, expectedErrors := ass.raisedErrorsToBeChecked(); checkHasRaisedErrors {
-		assert.Equal(t, expectedErrors, errs)
-	}
-	if checkHasRaisedAnError, expectedError := ass.raisedAnErrorToBeChecked(); checkHasRaisedAnError {
-		assert.Nil(t, expectedError)
-	}
-	if ass.notRaisedErrorToBeChecked() {
-		assert.Equal(t, 0, len(errs))
-	}
+	_ = "STUB: not implemented"
+	return
 }

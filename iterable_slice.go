@@ -6,26 +6,8 @@ type sliceIterable struct {
 }
 
 func newSliceIterable(items []Item, opts ...Option) Iterable {
-	return &sliceIterable{
-		items: items,
-		opts:  opts,
-	}
+	_ = "STUB: not implemented"
+	return *new(Iterable)
 }
 
-func (i *sliceIterable) Observe(opts ...Option) <-chan Item {
-	option := parseOptions(append(i.opts, opts...)...)
-	next := option.buildChannel()
-	ctx := option.buildContext(emptyContext)
-
-	go func() {
-		for _, item := range i.items {
-			select {
-			case <-ctx.Done():
-				return
-			case next <- item:
-			}
-		}
-		close(next)
-	}()
-	return next
-}
+func (i *sliceIterable) Observe(opts ...Option) <-chan Item { _ = "STUB: not implemented"; return nil }

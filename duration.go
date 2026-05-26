@@ -20,15 +20,13 @@ type duration struct {
 }
 
 func (d *duration) duration() time.Duration {
-	return d.d
+	_ = "STUB: not implemented"
+
+	// WithDuration is a duration option
+	return *new(time.Duration)
 }
 
-// WithDuration is a duration option
-func WithDuration(d time.Duration) Duration {
-	return &duration{
-		d: d,
-	}
-}
+func WithDuration(d time.Duration) Duration { _ = "STUB: not implemented"; return *new(Duration) }
 
 var tick = struct{}{}
 
@@ -42,53 +40,13 @@ type execution struct {
 }
 
 func timeCausality(elems ...interface{}) (context.Context, Observable, Duration) {
-	ch := make(chan Item, 1)
-	fs := make([]execution, len(elems)+1)
-	ctx, cancel := context.WithCancel(context.Background())
-	for i, elem := range elems {
-		i := i
-		elem := elem
-		if elem == tick {
-			fs[i] = execution{
-				f:      func() {},
-				isTick: true,
-			}
-		} else {
-			switch elem := elem.(type) {
-			default:
-				fs[i] = execution{
-					f: func() {
-						ch <- Of(elem)
-					},
-					isTick: false,
-				}
-			case error:
-				fs[i] = execution{
-					f: func() {
-						ch <- Error(elem)
-					},
-					isTick: false,
-				}
-			}
-		}
-	}
-	fs[len(elems)] = execution{
-		f: func() {
-			cancel()
-		},
-		isTick: false,
-	}
-	return ctx, FromChannel(ch), &causalityDuration{fs: fs}
+	_ = "STUB: not implemented"
+	return *new(context.Context), *new(Observable), *new(Duration)
 }
 
 func (d *causalityDuration) duration() time.Duration {
-	pop := d.fs[0]
-	pop.f()
-	d.fs = d.fs[1:]
-	if pop.isTick {
-		return time.Nanosecond
-	}
-	return time.Minute
+	_ = "STUB: not implemented"
+	return *new(time.Duration)
 }
 
 type mockDuration struct {
@@ -96,6 +54,6 @@ type mockDuration struct {
 }
 
 func (m *mockDuration) duration() time.Duration {
-	args := m.Called()
-	return args.Get(0).(time.Duration)
+	_ = "STUB: not implemented"
+	return *new(time.Duration)
 }

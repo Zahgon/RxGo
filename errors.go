@@ -5,15 +5,11 @@ type IllegalInputError struct {
 	error string
 }
 
-func (e IllegalInputError) Error() string {
-	return "illegal input: " + e.error
-}
+func (e IllegalInputError) Error() string { _ = "STUB: not implemented"; return "" }
 
 // IndexOutOfBoundError is triggered when the observable cannot access to the specified index.
 type IndexOutOfBoundError struct {
 	error string
 }
 
-func (e IndexOutOfBoundError) Error() string {
-	return "index out of bound: " + e.error
-}
+func (e IndexOutOfBoundError) Error() string { _ = "STUB: not implemented"; return "" }
